@@ -1,0 +1,17 @@
+{
+  "reference_id": "SYN-INDEPENDENT-STATEMENT-1",
+  "total": "730.00",
+  "categories": {
+    "sale": "2000.00",
+    "return": "-1000.00",
+    "fee": "-190.00",
+    "delivery": "-50.00",
+    "storage": "-30.00",
+    "storno": "10.00",
+    "refund": "5.00",
+    "other": "-15.00"
+  },
+  "postings": {
+    "SYN-P1": "775.00"
+  }
+}

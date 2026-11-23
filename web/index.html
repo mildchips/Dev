@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AI Profit Office · Защищённый локальный аудит</title>
+<link rel="stylesheet" href="/assets/styles.css"/>
+</head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="identity"><div class="brandmark">◇</div><div><b>Profit Office</b><small>SECURE LOCAL FINANCE LAB</small></div></div>
+    <div class="aside-section">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+    <nav id="navigation">
+      <button class="selected" data-page="overview"><span class="navicon">⌂</span>Обзор</button>
+      <button data-page="signals"><span class="navicon">◇</span>Возможности</button>
+      <button data-page="ledger"><span class="navicon">▤</span>Операции</button>
+      <button data-page="finance"><span class="navicon">✓</span>Сверка финансов</button>
+      <button data-page="costs"><span class="navicon">☷</span>Себестоимость</button>
+      <button data-page="scenarios"><span class="navicon">⇆</span>Сценарии прибыли</button>
+      <button data-page="actions"><span class="navicon">☑</span>План действий</button>
+      <button data-page="upload"><span class="navicon">↥</span>Импорт данных</button>
+      <button data-page="pricing"><span class="navicon">✦</span>Тарифы</button>
+    </nav>
+    <div class="aside-footer">
+      <span class="chip soft">● READ ONLY</span>
+      <div class="aside-note">Финансовые расчёты — по вашим операциям. Изменение цен, рекламы и средств не выполняется.</div>
+      <div class="aside-note muted">Локальный запуск · API площадок и AI-чат пока не подключены.</div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="shopbar"><label for="storeSelect" class="overline">МАГАЗИН</label><select id="storeSelect" aria-label="Выбор магазина"></select><span id="demoTag" class="chip gold" hidden>УЧЕБНЫЕ ДАННЫЕ</span></div>
+      <div class="topactions"><div class="modes" aria-label="Уровень интерфейса"><button data-mode="beginner" class="active">Начинаю</button><button data-mode="finance">Контролирую</button><button data-mode="growth">Развиваю</button></div><button id="addStoreBtn" class="btn compact ghost">+ Магазин</button><button id="logoutBtn" class="btn compact ghost" title="Завершить локальную сессию">Выйти</button></div>
+    </header>
+    <div class="claim"><span class="claimDot"></span><div><b>Найдём, где ваш бизнес на Wildberries и Ozon теряет от 100 000 ₽ прибыли в месяц.</b><span> Цифра — продуктовая гипотеза, не гарантия. В этой версии показываются только индивидуальные проверяемые сигналы по загруженным данным.</span></div></div>
+    <div id="alerts" aria-live="polite"></div>
+    <div id="body" class="content"></div>
+    <footer>AI Profit Office v0.3.7 Secure Local · для российских селлеров WB и Ozon · локальный финансовый прототип · ₽ · Тарифы — проектные предложения, оплата не реализована</footer>
+  </main>
+</div>
+<div id="overlay" class="overlay" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialogHead"><h2 id="dialogTitle"></h2><button id="closeDialog" class="x" aria-label="Закрыть">×</button></div><div id="dialogContent"></div></div></div>
+<div id="authGate" class="authGate" hidden>
+  <form id="authForm" class="authPanel">
+    <div class="eyebrow">ЛОКАЛЬНЫЙ ДОСТУП · v0.3.7</div>
+    <h1>AI Profit Office</h1>
+    <p id="authHelp">Для доступа к финансовым данным введите локальную парольную фразу.</p>
+    <label for="authPass">Парольная фраза</label>
+    <input id="authPass" type="password" autocomplete="current-password" required minlength="1" autofocus />
+    <div id="authError" class="help" aria-live="polite"></div>
+    <button class="btn" type="submit">Войти в рабочее пространство</button>
+    <div class="help" style="margin-top:14px">Доступ только на этом компьютере. Ключи WB/Ozon вводятся отдельно через терминал.</div>
+  </form>
+</div>
+<script src="/assets/main.js"></script>
+</body></html>

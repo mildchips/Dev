@@ -1,0 +1,23 @@
+# DO NOT treat these as verified WB/Ozon rate limits.
+# Current per-endpoint quotas MUST be checked against marketplace docs + response headers.
+# Production: version these centrally and stop calls on quota ambiguity.
+providers:
+  WB:
+    default: {enabled: false, max_requests_per_minute: null, max_concurrent_per_credential: 1}
+    financial_reports: {enabled: false, max_requests_per_minute: null, category: statistics}
+    advertising: {enabled: false, max_requests_per_minute: null, category: promotion}
+  Ozon:
+    default: {enabled: false, max_requests_per_minute: null, max_concurrent_per_credential: 1}
+    financial_reports: {enabled: false, max_requests_per_minute: null, category: seller_api}
+    advertising: {enabled: false, max_requests_per_minute: null, category: ads_api}
+retry_policy:
+  statuses: [429, 500, 502, 503, 504]
+  honor_retry_after: true
+  exponential_backoff_with_jitter: true
+  max_attempts: 5
+  deadline_seconds: 120
+security:
+  outbound_http_enabled: false
+  never_log_authorization_headers: true
+  max_request_timeout_seconds: 20
+  check_emergency_stop_before_each_request: true

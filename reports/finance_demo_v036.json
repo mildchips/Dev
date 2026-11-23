@@ -1,0 +1,44 @@
+{
+  "report_id": "SYN-REPORT-1",
+  "provider": "WB",
+  "start": "2026-11-01",
+  "end": "2026-11-07",
+  "status": "VERIFIED",
+  "label": "Сверено",
+  "event_count": 10,
+  "actual_kopeks": "73000",
+  "difference_kopeks": "0",
+  "category_kopeks": {
+    "delivery": "-5000",
+    "fee": "-19000",
+    "sale": "200000",
+    "other": "-1500",
+    "storage": "-3000",
+    "storno": "1000",
+    "refund": "500",
+    "return": "-100000"
+  },
+  "issues": [],
+  "quarantine": [],
+  "missing_cogs": [],
+  "sku": {
+    "SYN-A": {
+      "amount_kopeks": "77500",
+      "cogs_kopeks": "40000",
+      "contribution_kopeks": "37500"
+    },
+    "": {
+      "amount_kopeks": "-4500",
+      "cogs_kopeks": "0",
+      "contribution_kopeks": null
+    }
+  },
+  "contribution_kopeks": "33000",
+  "net_profit_kopeks": null,
+  "verified_at": "2026-11-22T05:26:19.774434+00:00",
+  "reference_id": "SYN-INDEPENDENT-STATEMENT-1",
+  "reference_sha256": "96b432e2f8cf8bdb5b668b983bc9104483288fb3aec673cf13ddc74d2355c858",
+  "imported_at": "2026-11-22T05:26:19.773309+00:00",
+  "contract": "aipo.normalized-finance/1",
+  "note": "Локальная нормализованная сверка. Вклад после учтённых расходов; налоги и полнота расходов не подтверждены. Отчёты могут пересекаться: не складывайте их итоги."
+}

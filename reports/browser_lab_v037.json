@@ -1,0 +1,7 @@
+{
+  "status": "NOT_VERIFIED",
+  "stage": "Chromium launch before page navigation",
+  "reason": "socket() failed: Operation not permitted; ptrace: Operation not permitted",
+  "desktop_verified": false,
+  "mobile_verified": false
+}

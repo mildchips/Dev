@@ -1,0 +1,32 @@
+{
+  "at_utc": "2026-11-23T07:40:10.871747+00:00",
+  "version": "0.3.7",
+  "scope": "in-process FastAPI TestClient + SQLite, synthetic only",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "logical_cpus": 9,
+  "tenants": 100,
+  "requests": 2000,
+  "concurrent_threads": 16,
+  "seconds": 14.102,
+  "rps": 141.82,
+  "latency_ms": {
+    "p50": 34.99,
+    "p95": 467.009,
+    "p99": 1168.837
+  },
+  "unexpected_results": 0,
+  "expected_denials": 500,
+  "synthetic_jobs_completed": 500,
+  "expected_jobs": 500,
+  "production_capacity_verified": false,
+  "excluded": [
+    "TCP/TLS",
+    "PostgreSQL/RLS",
+    "cloud KMS",
+    "WB/Ozon",
+    "HA/failover",
+    "1000 concurrent users",
+    "soak/chaos"
+  ]
+}

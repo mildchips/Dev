@@ -1,0 +1,12 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Profit Office — кабинеты</title><link rel="stylesheet" href="/lab.css"><script defer src="/lab.js"></script></head><body><main>
+<p class="eyebrow">AI PROFIT OFFICE · v0.3.7 · РОССИЙСКИЕ СЕЛЛЕРЫ</p>
+<h1>Личный кабинет</h1><p class="notice">Лаборатория безопасности. Используйте вымышленные учётные записи и магазины. Работа с реальными данными и ключами здесь не предусмотрена.</p>
+<form id="login"><h2>Вход</h2><label>Логин<input id="login-name" autocomplete="username" required maxlength="120"></label><label>Пароль<input id="password" type="password" autocomplete="current-password" required maxlength="256"></label><button>Войти</button></form>
+<section id="workspace" hidden><div class="row"><h2>Мои организации</h2><button id="logout" type="button">Выйти</button></div><label>Организация и роль<select id="tenant"></select></label><p id="scope"></p>
+<div id="owner-tools" hidden><h2>Добавить тестовый магазин</h2><form id="store"><input id="store-label" maxlength="80" placeholder="Название вымышленного магазина" required><button>Добавить</button></form></div>
+<h2>Доступные магазины</h2><div id="stores"></div>
+<form id="accept"><h2>Принять приглашение</h2><input id="invite-token" placeholder="Код приглашения" required><button>Принять</button></form>
+<div id="invite-tools" hidden><form id="invite"><h2>Пригласить в выбранный магазин</h2><label>Существующий тестовый логин<input id="invite-login" required></label><label>Магазин<select id="invite-store"></select></label><label>Роль<select id="invite-role"><option value="manager">Менеджер</option><option value="auditor">Аудитор — только просмотр</option></select></label><button>Создать приглашение на час</button></form><p id="new-invite"></p>
+<form id="revoke"><h2>Отозвать доступ</h2><input id="member-id" placeholder="ID тестового пользователя" required><button>Отозвать</button></form><div class="row"><button id="stop" type="button">Остановить задачи</button><button id="resume" type="button">Возобновить задачи</button><button id="audit" type="button">Журнал доступа</button></div></div>
+<h2>Результаты</h2><pre id="results">Выберите магазин и создайте синтетическую задачу.</pre></section><p id="status" role="status" aria-live="polite"></p><footer>Контур localhost · облачный KMS и MFA ещё не подключены · публичный запуск заблокирован</footer>
+</main></body></html>

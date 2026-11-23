@@ -1,0 +1,6 @@
+date;sku;category;amount;quantity;operation_id;order_id;description
+2026-11-01;SKU-001;sale;2500,00;1;sale-001;order-001;Продажа
+2026-11-01;SKU-001;commission;-425,00;;fee-001;order-001;Комиссия
+2026-11-01;SKU-001;logistics;-210,00;;log-001;order-001;Логистика
+2026-11-02;SKU-001;advertising;-190,00;;ads-001;;Расход рекламы
+2026-11-03;SKU-001;return;-2500,00;-1;return-001;order-001;Возврат

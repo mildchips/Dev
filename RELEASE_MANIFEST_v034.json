@@ -1,0 +1,25 @@
+{
+  "product": "AI Profit Office",
+  "version": "0.3.4",
+  "build_date": "2026-11-18",
+  "network_mode": "OFFLINE MOCK ONLY",
+  "test_result": {
+    "passed": 111,
+    "failed": 0
+  },
+  "source_base": "0.3.3",
+  "changed_modules": [
+    "app/offline_sync.py",
+    "app/httpx_mock_connector.py",
+    "app/offline_demo.py"
+  ],
+  "prompts": [
+    "prompts/MASTER_PROMPT_LOCAL_MAC.md",
+    "prompts/MASTER_PROMPT_PRODUCTION_RU.md"
+  ],
+  "limitations": [
+    "No real WB/Ozon API connection",
+    "No production SaaS deployment",
+    "No financial outcome verification using real data"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "contract": "aipo.normalized-finance/1",
+  "report_id": "SYN-REPORT-1",
+  "provider": "WB",
+  "start": "2026-11-01",
+  "end": "2026-11-07",
+  "complete": true,
+  "events": [
+    {
+      "event_id": "SYN-SALE-1",
+      "date": "2026-11-01",
+      "sku": "SYN-A",
+      "type": "sale",
+      "amount": "2000.00",
+      "quantity": 2,
+      "posting_id": "SYN-P1",
+      "batch_id": "SYN-B1"
+    },
+    {
+      "event_id": "SYN-RETURN-1",
+      "date": "2026-11-03",
+      "sku": "SYN-A",
+      "type": "return",
+      "amount": "-1000.00",
+      "quantity": -1,
+      "posting_id": "SYN-P1",
+      "batch_id": "SYN-B1",
+      "reverses": "SYN-SALE-1"
+    },
+    {
+      "event_id": "SYN-FEE-1",
+      "date": "2026-11-01",
+      "sku": "SYN-A",
+      "type": "fee",
+      "amount": "-200.00",
+      "quantity": null,
+      "posting_id": "SYN-P1"
+    },
+    {
+      "event_id": "SYN-ADJUST-1",
+      "date": "2026-11-02",
+      "sku": "SYN-A",
+      "type": "fee",
+      "amount": "20.00",
+      "quantity": null,
+      "posting_id": "SYN-P1"
+    },
+    {
+      "event_id": "SYN-DELIVERY-1",
+      "date": "2026-11-01",
+      "sku": "SYN-A",
+      "type": "delivery",
+      "amount": "-50.00",
+      "quantity": null,
+      "posting_id": "SYN-P1"
+    },
+    {
+      "event_id": "SYN-STORAGE-1",
+      "date": "2026-11-02",
+      "sku": "",
+      "type": "storage",
+      "amount": "-30.00",
+      "quantity": null,
+      "posting_id": ""
+    },
+    {
+      "event_id": "SYN-FEE-2",
+      "date": "2026-11-01",
+      "sku": "SYN-A",
+      "type": "fee",
+      "amount": "-10.00",
+      "quantity": null,
+      "posting_id": "SYN-P1"
+    },
+    {
+      "event_id": "SYN-STORNO-1",
+      "date": "2026-11-02",
+      "sku": "SYN-A",
+      "type": "storno",
+      "amount": "10.00",
+      "quantity": null,
+      "posting_id": "SYN-P1",
+      "reverses": "SYN-FEE-2"
+    },
+    {
+      "event_id": "SYN-REFUND-1",
+      "date": "2026-11-03",
+      "sku": "SYN-A",
+      "type": "refund",
+      "amount": "5.00",
+      "quantity": null,
+      "posting_id": "SYN-P1"
+    },
+    {
+      "event_id": "SYN-OTHER-1",
+      "date": "2026-11-02",
+      "sku": "",
+      "type": "other",
+      "amount": "-15.00",
+      "quantity": null,
+      "posting_id": ""
+    }
+  ]
+}

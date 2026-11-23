@@ -1,0 +1,5 @@
+{
+  "live_environment_enabled": false,
+  "disabled_scopes": [],
+  "permits": []
+}

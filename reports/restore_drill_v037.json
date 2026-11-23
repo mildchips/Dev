@@ -1,0 +1,15 @@
+{
+  "at_utc": "2026-11-23T07:40:11.533287+00:00",
+  "scope": "temporary synthetic SQLite lab only",
+  "backup_seconds": 0.205,
+  "restore_seconds": 0.1113,
+  "sha256": "036cf3f7b74ac61f99e18fe6847655f07894abbf8099bf62dd0394ddf21b0849",
+  "bytes": 86078,
+  "integrity": "ok",
+  "sessions_revoked": true,
+  "inflight_job_fenced": true,
+  "jobs_paused": true,
+  "manual_resume_completed": true,
+  "production_RPO_RTO_verified": false,
+  "PITR_HA_verified": false
+}

@@ -1,0 +1,20 @@
+{
+  "mode": "OFFLINE MOCK ONLY",
+  "outbound_http_calls": 0,
+  "financial_profit_verified": false,
+  "results": {
+    "synthetic_wb_1": {
+      "status": "complete",
+      "events": 1
+    },
+    "synthetic_wb_2": {
+      "status": "complete",
+      "events": 1
+    },
+    "synthetic_ozon": {
+      "status": "complete",
+      "events": 2
+    },
+    "kill_switch": "PASS"
+  }
+}

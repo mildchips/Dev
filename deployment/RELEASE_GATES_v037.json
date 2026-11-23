@@ -1,0 +1,32 @@
+{
+  "version": "0.3.7",
+  "date": "2026-11-23",
+  "target_market": "Russian WB/Ozon sellers",
+  "decision": "NO_GO",
+  "public_deployment_allowed": false,
+  "implemented_scope": "LOCAL financial app + separate synthetic multi-user lab",
+  "evidence": {
+    "offline_tests_python313": 260,
+    "offline_tests_python312": 260,
+    "new_cases": 30,
+    "synthetic_http_benchmark": "reports/load_lab_v037.json",
+    "synthetic_restore_drill": "reports/restore_drill_v037.json",
+    "browser_visual": "NOT_VERIFIED"
+  },
+  "production_blockers": {
+    "financial_routes_multiuser_perimeter": "PENDING",
+    "verified_identity_provider_MFA_recovery": "PENDING",
+    "postgres_RLS_all_entities_and_pool_tests": "PENDING",
+    "cloud_KMS_workload_IAM_rotation_revoke": "PENDING",
+    "distributed_queue_quota_stop_fairness": "PENDING",
+    "object_storage_export_link_revocation": "PENDING",
+    "HA_PITR_DR_RPO_RTO": "PENDING",
+    "realistic_load_soak_chaos": "PENDING",
+    "independent_pentest_remediation": "PENDING",
+    "operator_identity_legal_documents_and_notifications": "PENDING",
+    "Kazakhstan_remote_access_legal_review": "PENDING",
+    "WB_Ozon_commercial_API_approval": "PENDING",
+    "billing_tax_KKT_refunds": "PENDING"
+  },
+  "note": "Evidence checklist only. Changing a flag never makes the local app deployable."
+}
