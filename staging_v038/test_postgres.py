@@ -67,7 +67,7 @@ def postgres():
                 seed.execute("REVOKE ALL ON SCHEMA public FROM PUBLIC")
                 with psycopg.connect(**roles["migration"], autocommit=True) as migration:
                     migration.execute(MIGRATION.read_text())
-                for tenant, store in ((TENANT_A, STORE_A), (TENANT_A, STORE_B), (TENANT_B, STORE_A)):
+                for tenant, store in ((TENANT_A, STORE_A), (TENANT_A, STORE_B), (TENANT_B, STORE_A), (TENANT_B, STORE_B)):
                     seed.execute("INSERT INTO aipo_data.stores VALUES (%s,%s,'synthetic')", (tenant, store))
                     seed.execute(
                         "INSERT INTO aipo_data.reports VALUES (%s,%s,%s,'fixture','{}')", (tenant, store, store)
@@ -141,7 +141,7 @@ def test_pool_reuse_after_commit_and_rollback(roles, role, abort):
             assert stores(connection) == set()
         with tenant_transaction(pool, tenant=TENANT_B, user=OWNER) as connection:
             assert connection.info.backend_pid == backend
-            assert stores(connection) == {(TENANT_B, STORE_A)}
+            assert stores(connection) == {(TENANT_B, STORE_A), (TENANT_B, STORE_B)}
 
 
 @pytest.mark.parametrize("role,statement", [
@@ -195,7 +195,7 @@ def test_backup_and_restore_synthetic_data(postgres, tmp_path):
         for name in ("stores", "reports"):
             query = sql.SQL("SELECT * FROM aipo_data.{} ORDER BY tenant,id").format(sql.Identifier(name))
             expected = original.execute(query).fetchall()
-            assert len(expected) >= 3
+            assert len(expected) == 4
             assert restored.execute(query).fetchall() == expected
     with psycopg.connect(**{**roles["migration"], "dbname": "aipo_restored"}) as migration:
         assert migration.execute("SELECT count(*) FROM aipo_auth.membership").fetchone() == (0,)
@@ -282,3 +282,49 @@ def test_runtime_roles_cannot_bypass_rls(roles, role):
             with connection.transaction():
                 connection.execute("SET LOCAL row_security=off")
                 connection.execute("SELECT * FROM aipo_data.stores")
+
+
+def test_api_cannot_create_update_or_delete_other_tenants_store(roles):
+    with open_pool(**roles["api"]) as pool:
+        with pytest.raises(errors.InsufficientPrivilege):
+            with tenant_transaction(pool, tenant=TENANT_A, user=OWNER) as connection:
+                connection.execute(
+                    "INSERT INTO aipo_data.stores VALUES (%s,%s,'blocked')",
+                    (TENANT_B, UUID(int=101)),
+                )
+        with tenant_transaction(pool, tenant=TENANT_A, user=OWNER) as connection:
+            assert connection.execute(
+                "UPDATE aipo_data.stores SET label='blocked' WHERE tenant=%s", (TENANT_B,)
+            ).rowcount == 0
+        with pytest.raises(errors.InsufficientPrivilege):
+            with tenant_transaction(pool, tenant=TENANT_A, user=OWNER) as connection:
+                connection.execute("DELETE FROM aipo_data.stores WHERE tenant=%s", (TENANT_B,))
+
+
+def test_worker_report_fk_requires_matching_tenant_and_store(postgres):
+    container, roles = postgres
+    isolated_store = UUID(int=102)
+    with psycopg.connect(**roles["api"]) as connection:
+        with connection.transaction():
+            connection.execute(
+                "SELECT set_config('app.tenant_id', %s, true), set_config('app.user_id', %s, true)",
+                (str(TENANT_B), str(OWNER)),
+            )
+            connection.execute(
+                "INSERT INTO aipo_data.stores VALUES (%s,%s,'tenant-B-only')",
+                (TENANT_B, isolated_store),
+            )
+    try:
+        with open_pool(**roles["worker"]) as pool:
+            with pytest.raises(errors.ForeignKeyViolation):
+                with tenant_transaction(pool, tenant=TENANT_A, user=OWNER) as connection:
+                    connection.execute(
+                        "INSERT INTO aipo_data.reports VALUES (%s,%s,%s,'blocked','{}')",
+                        (TENANT_A, UUID(int=103), isolated_store),
+                    )
+    finally:
+        docker(
+            "exec", container, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres",
+            "-d", "aipo_staging", "-c",
+            f"DELETE FROM aipo_data.stores WHERE tenant='{TENANT_B}' AND id='{isolated_store}'",
+        )
